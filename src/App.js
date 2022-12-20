@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [result, setResult] = useState("");
+
+  const number1 = (Math.floor(Math.random() * 6)+1).toString();
+  const number2 = (Math.floor(Math.random() * 6) +1).toString();
+
+  const randomImg1 = require("./Images/img" + number1 + ".png");
+  const randomImg2 = require("./Images/img" + number2 + ".png");
+
+
+
+  const RefreshPageHandler = () => {
+    window.location.reload();
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <div className="">
+          <h1>{result}</h1>
+          <button className="btn-refresh" onClick={RefreshPageHandler}>Refresh Page</button>
+        </div>
+        <div className="images">
+          <div className="playerOne">
+            <img className="img img1" src={randomImg1} />
+          </div>
+          <div className="playerTwo">
+            <img className="img img2" src={randomImg2} />
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
